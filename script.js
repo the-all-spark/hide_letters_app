@@ -1,9 +1,13 @@
 window.onload = function () {
     const form = document.querySelector("#form");
     form.addEventListener("submit", getFormValues);
+    form.addEventListener("reset", clearFormValues);
+
+    // * При клике на кнопку "Transform"
 
     function getFormValues(e) {
         e.preventDefault(); // отмена перезагрузки страницы по умолчанию
+        deleteMessage(); // убрать сообщение о копировании текста
 
         // * Получение данных
         const requestText = form.querySelector('[name="request"]'); // получение элемента с name="request"
@@ -56,6 +60,34 @@ window.onload = function () {
         let outputField = document.querySelector("#result");
         outputField.innerHTML = hiddenText;
 
+        // * Копирование текста при клике на кнопку
+
+        const copyBtn = document.querySelector('.copy-icon');
+
+        copyBtn.addEventListener('click', function () {
+            console.log("Скопировать текст и вывести сообщение");
+            navigator.clipboard.writeText(hiddenText);
+
+            let message = document.querySelector("#message");
+            message.innerHTML = "Текст скопирован!";
+        })
+
     }
+
+    // * При клике на кнопку "Reset"
+
+    function clearFormValues() {
+        deleteMessage();
+    }
+
+    // * Очистка блока с сообщением о копировании текста
+    function deleteMessage() {
+        console.log("Убрать сообщение");
+
+        let message = document.querySelector("#message");
+        message.innerHTML = "";
+    }
+
+
 
 }
