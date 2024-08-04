@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hide symbols in text</title>
+</head>
+
+<body>
+    <h3>Маскировка текста</h3>
+    <form action="script.js" method="get" id="form">
+
+        <fieldset>
+            <legend>Текст:</legend>
+
+            <!-- <label for="request">Введите текст, который необходимо заменить:</label><br> -->
+            <p>Введите текст, который необходимо заменить символами:</p>
+            <!-- ! заменить потом на  autocomplete="off" -->
+            <input type="text" id="request" name="request" maxlength="50" size="50" required autocomplete="on"><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Символ</legend>
+
+            <p>Выберете символ замены:</p>
+            <input type="radio" id="star" name="symbol" value="*" checked>
+            <label for="star">*</label> <br>
+            <input type="radio" id="slash" name="symbol" value="/">
+            <label for="slash">/</label> <br>
+            <input type="radio" id="plus" name="symbol" value="+">
+            <label for="plus">+</label> <br>
+        </fieldset>
+
+        <br>
+        <p><i>Для выполнения маскировки текста выберите "Transform", <br> для сброса введенных данных - "Reset"</i></p>
+        <input id="reset-button" type="reset" value="Reset">
+        <input id="submit-button" type="submit" value="Transform">
+
+    </form>
+
+    <h4>Поле для вывода результата:</h4>
+    <div class="result"></div>
+
+</body>
+
+</html>
