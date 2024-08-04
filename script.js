@@ -78,6 +78,8 @@ window.onload = function () {
 
     function clearFormValues() {
         deleteMessage();
+        let outputField = document.querySelector("#result");
+        outputField.innerHTML = "";
     }
 
     // * Очистка блока с сообщением о копировании текста
