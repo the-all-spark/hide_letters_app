@@ -1,7 +1,5 @@
-window.onload = function() {
+window.onload = function () {
     const form = document.querySelector("#form");
-    //console.log(form);
-
     form.addEventListener("submit", getFormValues);
 
     function getFormValues(e) {
@@ -11,15 +9,12 @@ window.onload = function() {
         const requestText = form.querySelector('[name="request"]'); // получение элемента с name="request"
         const allSymbols = form.querySelectorAll('[name="symbol"]'); // получение элементОВ с name="symbol"
 
-        //console.log(requestText);
-        //console.log(allSymbols);
-
         // проверить, какой символ выбран и записать его value в переменную selectedSymbol
         let selectedSymbol;
-        for(let i = 0; i < allSymbols.length; i++) {
+        for (let i = 0; i < allSymbols.length; i++) {
             console.log(allSymbols[i].checked);
 
-            if(allSymbols[i].checked) {
+            if (allSymbols[i].checked) {
                 selectedSymbol = allSymbols[i].value;
                 console.log(`Символ: ${selectedSymbol}`);
             }
@@ -33,12 +28,31 @@ window.onload = function() {
         console.log(data);
 
         // * Обработка текста 
-        console.log(data.text);
-        console.log(typeof(data.text));
+        // const regExp = /([\u0401\u0451\u0400-\u04FF]).+/gium; - для сложных запросов на кириллице
+
+        let text = data.text;
+        let symbol = data.symbol;
+
+        let textInLetters = text.split("");
+        console.log(textInLetters);
+
+        let hiddenText = "";
+        let hiddenLetter;
+
+        for (let i = 0; i < textInLetters.length; i++) {
+
+            if (textInLetters[i] === ' ') {
+                hiddenLetter = textInLetters[i];
+            } else {
+                hiddenLetter = textInLetters[i].replace(textInLetters[i], symbol);
+            }
+            hiddenText = hiddenText + hiddenLetter;
+
+        }
+        console.log(hiddenText);
 
         
+
     }
-
-
 
 }
