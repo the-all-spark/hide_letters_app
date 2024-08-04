@@ -1,0 +1,31 @@
+form {
+    width: 30%;
+    margin-bottom: 30px;
+}
+
+fieldset:not(:nth-of-type(2)) {
+    margin-bottom: 30px;
+}
+
+legend {
+    font-weight: bold;
+}
+
+#reset-button {
+    float: right;
+    background-color: rgba(229, 146, 168, 0.481);
+}
+
+#submit-button {
+    background-color: rgba(146, 229, 200, 0.481);
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+.result {
+    width: 30%;
+    height: 70px;
+    border: 2px solid rgb(192, 192, 192);
+}
