@@ -14,8 +14,10 @@
 ![image](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white "CSS") 
 ![image](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E "JS") 
 
-**Демо:** [Перейти на сайт](https://the-all-spark.github.io/hide_letters_app/)  
-![screenshot](./assets/app_screenshot.jpg "Скриншот приложения")
+**Демо:** [Перейти на сайт](https://the-all-spark.github.io/hide_letters_app/) 
+
+<img src="./assets/app_screenshot_blank.jpg" width="400" alt="Скриншот приложения">
+<img src="./assets/app_screenshot.jpg " width="400" alt="Скриншот приложения">
 
 ## Реализованный функционал:
 1. замена каждого символа (кроме пробела) в введенном тексте на символ, выбранный пользователем из списка;
