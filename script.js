@@ -90,6 +90,4 @@ window.onload = function () {
         message.innerHTML = "";
     }
 
-
-
 }
