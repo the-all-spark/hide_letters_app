@@ -51,7 +51,10 @@ window.onload = function () {
         }
         console.log(hiddenText);
 
-        
+        // * Вывод данных на страницу
+
+        let outputField = document.querySelector("#result");
+        outputField.innerHTML = hiddenText;
 
     }
 
