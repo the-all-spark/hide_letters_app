@@ -17,7 +17,8 @@ window.onload = function () {
         // 2 способ получения данных:
         /*
         const formData = new FormData(form); // создание объекта FormData, передача в него элемента формы
-        const requestText = formData.get('request');
+        const requestText = formData.get('request'); // get(ключ) - возвращает первое значение ключа
+        const allSymbols = formData.getAll('symbol'); // возвращает массив значений для указанного ключа
         */
 
         let text = requestText.value;
