@@ -10,8 +10,17 @@ window.onload = function () {
         deleteMessage(); // убрать сообщение о копировании текста
 
         // * Получение данных
+        // 1 способ получения данных:
         const requestText = form.querySelector('[name="request"]'); // получение элемента с name="request"
         const allSymbols = form.querySelectorAll('[name="symbol"]'); // получение элементОВ с name="symbol"
+
+        // 2 способ получения данных:
+        /*
+        const formData = new FormData(form); // создание объекта FormData, передача в него элемента формы
+        const requestText = formData.get('request');
+        */
+
+        let text = requestText.value;
 
         // проверить, какой символ выбран и записать его value в переменную selectedSymbol
         let selectedSymbol;
@@ -24,18 +33,8 @@ window.onload = function () {
             }
         }
 
-        // создать объект с данными
-        const data = {
-            text: requestText.value,
-            symbol: selectedSymbol
-        };
-        console.log(data);
-
         // * Обработка текста 
         // const regExp = /([\u0401\u0451\u0400-\u04FF]).+/gium; - для сложных запросов на кириллице
-
-        let text = data.text;
-        let symbol = data.symbol;
 
         let textInLetters = text.split("");
         console.log(textInLetters);
@@ -48,7 +47,7 @@ window.onload = function () {
             if (textInLetters[i] === ' ') {
                 hiddenLetter = textInLetters[i];
             } else {
-                hiddenLetter = textInLetters[i].replace(textInLetters[i], symbol);
+                hiddenLetter = textInLetters[i].replace(textInLetters[i], selectedSymbol); 
             }
             hiddenText = hiddenText + hiddenLetter;
 
@@ -71,7 +70,6 @@ window.onload = function () {
             let message = document.querySelector("#message");
             message.innerHTML = "Текст скопирован!";
         })
-
     }
 
     // * При клике на кнопку "Reset"
