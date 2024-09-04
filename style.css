@@ -60,3 +60,78 @@ p {
     text-align: right;
     color: rgb(25, 149, 112);
 }
+
+/* ----------- Media queries ----------- */
+
+@media screen and (max-width: 1400px) {
+    form {
+        width: 40%;
+    }
+    .wrapper {
+        width: 40%;
+    }
+    #request {
+        width: 95%;
+    } 
+}
+
+@media screen and (max-width: 1050px) {
+    form {
+        width: 50%;
+    }
+    .wrapper {
+        width: 50%;
+    }
+    #request {
+        width: 98%;
+    } 
+}
+
+@media screen and (max-width: 850px) {
+    form {
+        width: 60%;
+    }
+    .wrapper {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 710px) {
+    form {
+        width: 70%;
+    }
+    .wrapper {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    form {
+        width: 80%;
+    }
+    .wrapper {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    form {
+        width: 90%;
+    }
+    .wrapper {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    body {
+        margin: 20px 0 0 20px;
+    }
+    form {
+            width: 95%;
+    }
+    .wrapper {
+        width: 95%;
+    }
+
+}
