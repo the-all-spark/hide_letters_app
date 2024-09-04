@@ -1,5 +1,5 @@
 body {
-    margin: 30px 0 0 30px;
+    margin: 30px 0 30px 30px;
 }
 
 form {
@@ -64,9 +64,7 @@ p {
 /* ----------- Media queries ----------- */
 
 @media screen and (max-width: 1400px) {
-    form {
-        width: 40%;
-    }
+    form,
     .wrapper {
         width: 40%;
     }
@@ -76,9 +74,7 @@ p {
 }
 
 @media screen and (max-width: 1050px) {
-    form {
-        width: 50%;
-    }
+    form,
     .wrapper {
         width: 50%;
     }
@@ -88,50 +84,37 @@ p {
 }
 
 @media screen and (max-width: 850px) {
-    form {
-        width: 60%;
-    }
+    form,
     .wrapper {
         width: 60%;
     }
 }
 
 @media screen and (max-width: 710px) {
-    form {
-        width: 70%;
-    }
+    form,
     .wrapper {
         width: 70%;
     }
 }
 
 @media screen and (max-width: 500px) {
-    form {
-        width: 80%;
+    body {
+        margin: 0;
     }
+    h3,
+    h4 {
+        text-align: center;
+    }
+    form,
     .wrapper {
-        width: 80%;
+        width: 85%;
+        margin: 0 auto;
     }
 }
 
 @media screen and (max-width: 430px) {
-    form {
-        width: 90%;
-    }
-    .wrapper {
-        width: 90%;
-    }
-}
-
-@media screen and (max-width: 330px) {
-    body {
-        margin: 20px 0 0 20px;
-    }
-    form {
-            width: 95%;
-    }
+    form,
     .wrapper {
         width: 95%;
     }
-
 }
