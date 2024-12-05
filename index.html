@@ -17,9 +17,12 @@
         <fieldset>
             <legend>Текст:</legend>
 
-            <!-- <label for="request">Введите текст, который необходимо заменить:</label><br> -->
+            <!-- <label for="request">
+                Введите текст, который необходимо заменить:
+            </label><br> -->
             <p>Введите текст, который необходимо заменить символами:</p>
-            <input type="text" id="request" name="request" maxlength="50" size="50" required autocomplete="off"><br>
+            <input type="text" id="request" name="request" maxlength="50" 
+              size="50" autocomplete="off" required><br>
         </fieldset>
 
         <fieldset>
@@ -35,7 +38,8 @@
         </fieldset>
 
         <br>
-        <p><i>Для выполнения маскировки текста выберите "Transform", <br> для сброса введенных данных - "Reset"</i></p>
+        <p><i>Для применения маскировки текста выберите "Transform", <br> 
+            для сброса введенных данных - "Reset"</i></p>
         <input id="reset-button" type="reset" value="Reset">
         <input id="submit-button" type="submit" value="Transform">
 
@@ -45,7 +49,8 @@
     <div class="wrapper">
         <div id="result"></div>
         <div class="copy-icon">
-            <img src="./assets/copy-icon.svg" alt="copy-icon" title="Нажмите на кнопку, чтобы скопировать весь текст">
+            <img src="./assets/copy-icon.svg" alt="copy-icon" 
+              title="Нажмите на кнопку, чтобы скопировать весь текст">
         </div>
         <div id="message"></div>
     </div>

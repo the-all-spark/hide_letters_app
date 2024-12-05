@@ -1,92 +1,88 @@
 window.onload = function () {
+
     const form = document.querySelector("#form");
-    form.addEventListener("submit", getFormValues);
-    form.addEventListener("reset", clearFormValues);
+    form.addEventListener("submit", transformText);
+    form.addEventListener("reset", resetFormData);
 
-    // * При клике на кнопку "Transform"
+    // * ----- При клике на кнопку "Transform"
+    function transformText(e) {
+        e.preventDefault();
+        showDeleteMessage(false);
 
-    function getFormValues(e) {
-        e.preventDefault(); // отмена перезагрузки страницы по умолчанию
-        deleteMessage(); // убрать сообщение о копировании текста
+        // * Получение данных  
+        const requestText = form.querySelector('[name="request"]'); // элемент с name="request"
+        const allSymbols = form.querySelectorAll('[name="symbol"]'); // элементЫ с name="symbol" 
+        //console.log(allSymbols);
 
-        // * Получение данных
-        // 1 способ получения данных:
-        const requestText = form.querySelector('[name="request"]'); // получение элемента с name="request"
-        const allSymbols = form.querySelectorAll('[name="symbol"]'); // получение элементОВ с name="symbol"
-
-        // 2 способ получения данных:
-        /*
-        const formData = new FormData(form); // создание объекта FormData, передача в него элемента формы
-        const requestText = formData.get('request'); // get(ключ) - возвращает первое значение ключа
-        const allSymbols = formData.getAll('symbol'); // возвращает массив значений для указанного ключа
-        */
-
+        // получить введенный текст
         let text = requestText.value;
 
-        // проверить, какой символ выбран и записать его value в переменную selectedSymbol
-        let selectedSymbol;
-        for (let i = 0; i < allSymbols.length; i++) {
-            console.log(allSymbols[i].checked);
-
-            if (allSymbols[i].checked) {
-                selectedSymbol = allSymbols[i].value;
-                console.log(`Символ: ${selectedSymbol}`);
-            }
-        }
+        // определить какой символ выбран
+        let selectedSymbol = getSelectedSymbol(allSymbols);
+        console.log(`Символ: ${selectedSymbol}`);
 
         // * Обработка текста 
         // const regExp = /([\u0401\u0451\u0400-\u04FF]).+/gium; - для сложных запросов на кириллице
-
-        let textInLetters = text.split("");
-        console.log(textInLetters);
-
-        let hiddenText = "";
-        let hiddenLetter;
-
-        for (let i = 0; i < textInLetters.length; i++) {
-
-            if (textInLetters[i] === ' ') {
-                hiddenLetter = textInLetters[i];
-            } else {
-                hiddenLetter = textInLetters[i].replace(textInLetters[i], selectedSymbol); 
-            }
-            hiddenText = hiddenText + hiddenLetter;
-
-        }
+        let hiddenText = hideText(text, selectedSymbol);
         console.log(hiddenText);
 
         // * Вывод данных на страницу
-
         let outputField = document.querySelector("#result");
         outputField.innerHTML = hiddenText;
 
         // * Копирование текста при клике на кнопку
-
         const copyBtn = document.querySelector('.copy-icon');
-
-        copyBtn.addEventListener('click', function () {
-            console.log("Скопировать текст и вывести сообщение");
-            navigator.clipboard.writeText(hiddenText);
-
-            let message = document.querySelector("#message");
-            message.innerHTML = "Текст скопирован!";
-        })
+        copyBtn.addEventListener('click', function () { copyHiddenText(hiddenText) } );
     }
 
-    // * При клике на кнопку "Reset"
-
-    function clearFormValues() {
-        deleteMessage();
-        let outputField = document.querySelector("#result");
-        outputField.innerHTML = "";
+    // функция получения выбранного символа для замены
+    function getSelectedSymbol(symbolsArray) {
+        for (let i = 0; i < symbolsArray.length; i++) {
+            if (!symbolsArray[i].checked) continue; // true для выбранного символа
+            return symbolsArray[i].value;
+        }
     }
 
-    // * Очистка блока с сообщением о копировании текста
-    function deleteMessage() {
-        console.log("Убрать сообщение");
+    // функция скрытия текста (замена символами)
+    function hideText(text, symbol) {
+        let textInLetters = text.split("");
+        console.log(textInLetters);
 
+        let hiddenTextResult = "";
+        let hiddenLetter;
+        for (let i = 0; i < textInLetters.length; i++) {
+            if (textInLetters[i] === ' ') {
+                hiddenLetter = textInLetters[i];
+            } else {
+                hiddenLetter = textInLetters[i].replace(textInLetters[i], symbol); 
+            }
+            hiddenTextResult += hiddenLetter;
+        }
+
+        return hiddenTextResult;
+    }
+
+    // функция копирования текста и вызов функции показа сообщения
+    function copyHiddenText(hiddenText) {
+        navigator.clipboard.writeText(hiddenText);
+        showDeleteMessage(true);
+    }
+
+    // * ----- При клике на кнопку "Reset" - удаление результата и сообщения
+    function resetFormData() {
+        document.querySelector("#result").innerHTML = "";
+        showDeleteMessage(false);
+    }
+
+    // * Функция удаления сообщения "Текст скопирован"
+    function showDeleteMessage(flag) {
         let message = document.querySelector("#message");
-        message.innerHTML = "";
+
+        if (flag) {
+            message.innerHTML = "Текст скопирован!";
+        } else {
+            message.innerHTML = "";
+        } 
     }
 
 }
